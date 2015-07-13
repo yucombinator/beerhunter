@@ -5,11 +5,15 @@ class SiteController < ActionController::Base
     @result.each do |post|
       p post['size']
 
-      matched = post['size'].split(' ') #.scan(/([0-9])\w+/i)
-      matched = matched[0].split(' ') #.scan(/([0-9])\w+/i)
+      matched = post['size'].scan(/([0-9]+)/)
+      p matched
 
-      @qty = matched[0]
-      @volume = matched[3]
+      @qty = matched[0][0]
+      @volume = matched[1][0]
+
+      p @qty
+      p @volume
+
       @price = post['price']
       @abv = post['abv'].to_f
 
