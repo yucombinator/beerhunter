@@ -34,7 +34,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'httparty'
 gem 'twitter-typeahead-rails'
-gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'less-rails-semantic_ui'
+gem 'autoprefixer-rails'
+gem 'therubyracer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

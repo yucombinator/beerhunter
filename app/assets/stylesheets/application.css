@@ -12,15 +12,14 @@
  *
  *= require_tree .
  *= require_self
+ *= require semantic_ui/semantic_ui
  */
-@import "semantic-ui";
 .container{
     padding-top:80px;
 }
 
 body {
-  background-color: #DADADA;
-  padding-top:130px;
+  background-color: #DADADA !important;
 }
 body > .grid {
     height: 100%;

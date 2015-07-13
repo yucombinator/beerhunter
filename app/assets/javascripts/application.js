@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require twitter/typeahead.min
-//= require semantic-ui
+//= require semantic_ui/semantic_ui
 //= require_tree .
