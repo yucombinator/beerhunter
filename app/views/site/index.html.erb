@@ -1,11 +1,38 @@
-<table>
-<%- @results_sorted.each do |item| -%>
-<tr>
-  <th><%= item[:name] %></th>
-  <td><%= item[:size] %></td>
-  <td><%= item[:abv] %></td>
-  <td><%= item[:price] %></td>
-  <td><%= item[:value_score] %></td>
-</tr>
-<%- end -%>
-</table>
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <h1>BeerHunter</h1>
+        <div class="ui stacked segment">
+            <p class="content">Find the best bang for the buck at your local Beer Store.</p>
+            <div class="ui large form">
+                <div class="field">
+                    <div class="ui left icon input prefetch">
+                      <i class="lock icon"></i>
+                      <input class="typeahead" type="text" placeholder="Store location...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui message">
+          What is this?
+        </div>
+    </div>
+</div>
+
+<script>
+    var stores = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('city'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        // url points to a json file that contains an array of stores names
+        prefetch: '/get_store_listing/'
+    });
+
+    // initialize the bloodhound suggestion engine
+    stores.initialize();
+
+    // passing in `null` for the `options` arguments will result in the default
+    // options being used
+    $('#prefetch .typeahead').typeahead(null, {
+        displayKey: 'city',
+        source: stores.ttAdapter()
+    });
+</script>

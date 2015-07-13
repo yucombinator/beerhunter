@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+@import "semantic-ui";
+.container{
+    padding-top:80px;
+}
+
+body {
+  background-color: #DADADA;
+  padding-top:130px;
+}
+body > .grid {
+    height: 100%;
+}
+.image {
+    margin-top: -100px;
+}
+.column {
+    max-width: 450px;
+}

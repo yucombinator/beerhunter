@@ -1,5 +1,8 @@
-class SiteController < ActionController::Base
+class SiteController < ApplicationController
   def index
+
+  end
+  def listing
     @result = HTTParty.get "http://ontariobeerapi.ca:80/stores/4164/products/"
     @results = []
     @result.each do |post|
@@ -23,5 +26,10 @@ class SiteController < ActionController::Base
       @results.push({:name => post['name'], :size => post['size'], :abv => @abv, :abv => @abv, :volume => @volume, :price => @price, :value_score => value_score})
       @results_sorted = @results.sort_by {|obj| obj[:value_score]}.reverse!
     end
+  end
+
+  def get_store_listing
+    @res = HTTParty.get "http://ontariobeerapi.ca:80/stores/"
+    render json: @res
   end
 end
