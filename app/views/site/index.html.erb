@@ -1,0 +1,11 @@
+<table>
+<%- @results_sorted.each do |item| -%>
+<tr>
+  <th><%= item[:name] %></th>
+  <td><%= item[:size] %></td>
+  <td><%= item[:abv] %></td>
+  <td><%= item[:price] %></td>
+  <td><%= item[:value_score] %></td>
+</tr>
+<%- end -%>
+</table>
