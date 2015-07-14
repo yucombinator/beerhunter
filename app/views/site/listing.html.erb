@@ -1,11 +1,38 @@
-<table>
-  <%- @results_sorted.each do |item| -%>
-      <tr>
-        <th><%= item[:name] %></th>
-        <td><%= item[:size] %></td>
-        <td><%= item[:abv] %></td>
-        <td><%= item[:price] %></td>
-        <td><%= item[:value_score] %></td>
-      </tr>
-  <%- end -%>
-</table>
+<div class="ui middle aligned center aligned grid" style="padding-top:50px;">
+  <div>
+      <h1 class="text-center">BeerHunter</h1>
+      <div class="ui stacked segment">
+        <table class="ui celled padded table striped">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>ABV</th>
+            <th>Price</th>
+            <th>Score</th>
+          </tr></thead>
+          <tbody>
+          <%- @results_sorted.each do |item| -%>
+          <tr>
+            <td class="single line">
+              <h4 class="ui center aligned header"><%= item[:name] %></h4>
+            </td>
+            <td class="single line">
+              <%= item[:size] %>
+            </td>
+            <td class="right aligned">
+              <a class="ui orange circular label"><%= item[:abv] %></a>
+            </td>
+            <td class="right aligned">
+              <%= item[:price] %>
+            </td>
+            <td class="right aligned">
+              <%= item[:value_score] %>
+            </td>
+          </tr>
+          <%- end -%>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

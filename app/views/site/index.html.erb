@@ -1,12 +1,11 @@
-<div class="ui middle aligned center aligned grid">
+<div class="ui middle aligned center aligned grid home">
     <div class="column">
       <h1>BeerHunter</h1>
         <div class="ui stacked segment">
             <p class="content">Find the best bang for the buck at your local Beer Store.</p>
             <div class="ui large form">
                 <div class="field">
-                    <div class="ui left icon input prefetch">
-                      <i class="lock icon"></i>
+                    <div class="ui left input">
                       <input class="typeahead" type="text" placeholder="Store location...">
                     </div>
                 </div>
@@ -20,7 +19,7 @@
 
 <script>
     var stores = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('city'),
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace(['city','address']),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         // url points to a json file that contains an array of stores names
         prefetch: '/get_store_listing/'
@@ -31,8 +30,17 @@
 
     // passing in `null` for the `options` arguments will result in the default
     // options being used
-    $('#prefetch .typeahead').typeahead(null, {
-        displayKey: 'city',
+    $('.typeahead').typeahead(null, {
+        display: function(value){
+            return value.city + " " + value.address;
+        },
         source: stores.ttAdapter()
+    });
+
+    $('.typeahead').bind('typeahead:select', function(ev, suggestion) {
+        if(suggestion == null || suggestion.store_id == null)
+            return;
+        window.location.href = "/listing/" + suggestion.store_id;
+        console.log('Selection: ' + suggestion.store_id);
     });
 </script>

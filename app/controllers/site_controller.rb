@@ -23,8 +23,8 @@ class SiteController < ApplicationController
       p @abv
 
       value_score = @qty.to_f * @volume.to_f * @abv/ @price.to_f
-      @results.push({:name => post['name'], :size => post['size'], :abv => @abv, :abv => @abv, :volume => @volume, :price => @price, :value_score => value_score})
-      @results_sorted = @results.sort_by {|obj| obj[:value_score]}.reverse!
+      @results.push({:name => post['name'], :size => post['size'], :abv => @abv, :volume => @volume, :price => @price, :value_score => value_score})
+      @results_sorted = @results.sort_by {|obj| obj[:value_score]}.reverse![0..14]
     end
   end
 

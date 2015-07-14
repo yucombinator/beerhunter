@@ -21,7 +21,8 @@
 body {
   background-color: #DADADA !important;
 }
-body > .grid {
+
+.home {
     height: 100%;
 }
 .image {
@@ -29,4 +30,12 @@ body > .grid {
 }
 .column {
     max-width: 450px;
+}
+
+.twitter-typeahead{
+    width:100%;
+}
+
+.text-center{
+    text-align: center;
 }
