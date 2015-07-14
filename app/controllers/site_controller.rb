@@ -1,4 +1,5 @@
 class SiteController < ApplicationController
+  helper :all
   def index
 
   end

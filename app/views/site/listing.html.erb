@@ -25,7 +25,7 @@
               <%= item[:size] %>
             </td>
             <td class="right aligned">
-              <a class="ui orange circular label"><%= item[:abv] %></a>
+              <a class="ui <%= abv_color(item[:abv]) %> circular label"><%= item[:abv] %></a>
             </td>
             <td class="right aligned">
               <a class="ui teal tag label">$<%= item[:price] %></a>
