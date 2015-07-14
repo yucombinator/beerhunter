@@ -17,6 +17,7 @@
           <%- @results_sorted.each_with_index do |item, index| -%>
           <tr>
             <td class="single line">
+              <a href="#<%= index %>"></a>
               <h4 class="ui center aligned header"><%= index + 1 %></h4>
             </td>
             <td class="single line">
@@ -42,7 +43,7 @@
           <%- end -%>
           </tbody>
         </table>
-        <a class="huge ui button fluid" href="/listing/<%= @store.to_s + '/' + (@limit+50).to_s %>">
+        <a class="huge ui button fluid" href="/listing/<%= @store.to_s + '/' + (@limit+50).to_s + '/#' + @limit.to_s %>">
           Load More
         </a>
       </div>
