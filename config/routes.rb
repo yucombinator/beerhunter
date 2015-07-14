@@ -6,7 +6,7 @@ Rails.application.routes.draw do
    root 'site#index'
 
   # Example of regular route:
-   get 'listing/:store_id' => 'site#listing'
+   get 'listing/:store_id(/:limit)' => 'site#listing'
    get 'get_store_listing' => 'site#get_store_listing'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

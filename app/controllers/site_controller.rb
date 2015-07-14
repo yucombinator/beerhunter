@@ -4,30 +4,40 @@ class SiteController < ApplicationController
 
   end
   def listing
-    @result = HTTParty.get "http://ontariobeerapi.ca:80/stores/4164/products/"
+    if params[:limit] == nil
+      @limit = 14
+    else
+      @limit = params[:limit].to_i
+    end
+
+    if params[:store_id] == nil
+      @store = 4164
+    else
+      @store = params[:store_id].to_i
+    end
+
+    @result = HTTParty.get "http://ontariobeerapi.ca:80/stores/" + @store.to_s + "/products/"
     @results = []
     @result.each do |post|
-      p post['size']
 
       matched = post['size'].scan(/([0-9]+)/)
-      p matched
 
       @qty = matched[0][0]
       @volume = matched[1][0]
-
-      p @qty
-      p @volume
 
       @price = post['price']
       @on_sale = post['on_sale']
       @abv = post['abv'].to_f
 
-      p @abv
-
       value_score = @qty.to_f * @volume.to_f * @abv/ @price.to_f
-      @results.push({:name => post['name'], :size => post['size'], :abv => @abv, :volume => @volume, :price => @price, :value_score => value_score})
-      @results_sorted = @results.sort_by {|obj| obj[:value_score]}.reverse![0..14]
+      @results.push({:name => post['name'], :size => post['size'], :abv => @abv, :volume => @volume, :price => @price, :value_score => value_score, :on_sale => @on_sale})
     end
+
+    if @limit > @results.length - 1
+      @limit = @results.length - 1
+    end
+
+    @results_sorted = @results.sort_by {|obj| obj[:value_score]}.reverse![0..@limit]
   end
 
   def get_store_listing
