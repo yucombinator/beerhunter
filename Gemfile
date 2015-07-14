@@ -34,7 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'httparty'
 gem 'twitter-typeahead-rails'
-
+gem 'less-rails-semantic_ui'
 gem 'autoprefixer-rails'
 gem 'therubyracer'
 
