@@ -18,6 +18,7 @@ class SiteController < ApplicationController
       p @volume
 
       @price = post['price']
+      @on_sale = post['on_sale']
       @abv = post['abv'].to_f
 
       p @abv

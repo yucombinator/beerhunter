@@ -30,9 +30,22 @@
 
     // passing in `null` for the `options` arguments will result in the default
     // options being used
-    $('.typeahead').typeahead(null, {
+    $('.typeahead').typeahead({classNames: {
+        menu: 'tt-menu ui raised segment twitter-typeahead ',
+        suggestion: 'tt-suggestion ui relaxed divided list'
+    }}, {
         display: function(value){
             return value.city + " " + value.address;
+        },
+        templates:{
+            suggestion: function(item){
+                return '  <div class="item"> ' +
+                '       <div class="content left">' +
+                '       <a class="header">'+item.city+'</a> ' +
+                '       <div class="description"><i class="large marker middle aligned icon"></i>'+item.address+'</div> ' +
+                '</div>' +
+                '</div>';
+            }
         },
         source: stores.ttAdapter()
     });

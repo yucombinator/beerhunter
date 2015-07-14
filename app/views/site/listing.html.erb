@@ -5,6 +5,7 @@
         <table class="ui celled padded table striped">
           <thead>
           <tr>
+            <th>Rank</th>
             <th>Name</th>
             <th>Size</th>
             <th>ABV</th>
@@ -12,8 +13,11 @@
             <th>Score</th>
           </tr></thead>
           <tbody>
-          <%- @results_sorted.each do |item| -%>
+          <%- @results_sorted.each_with_index do |item, index| -%>
           <tr>
+            <td class="single line">
+              <h4 class="ui center aligned header"><%= index + 1 %></h4>
+            </td>
             <td class="single line">
               <h4 class="ui center aligned header"><%= item[:name] %></h4>
             </td>
@@ -24,10 +28,10 @@
               <a class="ui orange circular label"><%= item[:abv] %></a>
             </td>
             <td class="right aligned">
-              <%= item[:price] %>
+              <a class="ui teal tag label">$<%= item[:price] %></a>
             </td>
             <td class="right aligned">
-              <%= item[:value_score] %>
+              <%= item[:value_score].to_i %>
             </td>
           </tr>
           <%- end -%>
