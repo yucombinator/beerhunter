@@ -16,27 +16,27 @@
           <tbody>
           <%- @results_sorted.each_with_index do |item, index| -%>
           <tr>
-            <td class="single line">
+            <td class="left aligned">
               <a href="#<%= index %>"></a>
-              <h4 class="ui center aligned header"><%= index + 1 %></h4>
+              <h4 class="ui left aligned header"><%= index + 1 %></h4>
             </td>
-            <td class="single line">
-              <h4 class="ui center aligned header"><%= item[:name] %></h4>
+            <td class="left aligned">
+              <h4 class="ui left aligned header"><%= item[:name] %></h4>
             </td>
-            <td class="single line">
+            <td class="left aligned">
               <%= item[:size] %>
             </td>
-            <td class="right aligned">
+            <td class="left aligned">
               <a class="ui <%= abv_color(item[:abv]) %> circular label"><%= item[:abv] %></a>
             </td>
-            <td class="right aligned">
+            <td class="left aligned">
               <a class="ui <%= if item[:on_sale]
                                  'red'
                                else
                                  'teal'
                                end%> tag label">$<%= item[:price] %></a>
             </td>
-            <td class="right aligned">
+            <td class="left aligned">
               <%= item[:value_score].to_i %>
             </td>
           </tr>
