@@ -21,9 +21,9 @@
                 },
                 i = 0,
                 generateBubble = function(){
-                    if(i < 25){
+                    if(i < 30){
                         var el = document.createElement('div'),
-                                size = randomN(5, 15);
+                                size = randomN(5, 20);
                         el.setAttribute('style','width: '+size+'px; height: '+size+'px; left:'+randomN(1, c.offsetWidth-(size+4) )+'px;');
                         c.appendChild(el);
                         i++;
