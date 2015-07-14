@@ -1,8 +1,8 @@
 <div class="ui middle aligned center aligned grid home">
     <div class="column">
-      <h1>BeerHunter</h1>
+      <h1 class="title">BeerHunter</h1>
         <div class="ui stacked segment">
-            <p class="content">Find the best bang for the buck at your local Beer Store.</p>
+            <h2 class="content">Find the best bang for the buck at your local Beer Store.</h2>
             <div class="ui large form">
                 <div class="field">
                     <div class="ui left input">
@@ -10,9 +10,17 @@
                     </div>
                 </div>
             </div>
+          <div class="ui icon message" id="loader" style="display:inherit;">
+            <div class="content">
+              <div class="header">
+                <i class="notched circle loading icon"></i> Loading
+              </div>
+              <p>Just wait a sec.</p>
+            </div>
+          </div>
         </div>
         <div class="ui message">
-          What is this?
+          A <a href="http://yuchen.io/" title="My Site!">Yu Chen</a> production / What is this?
         </div>
     </div>
 </div>
@@ -26,7 +34,11 @@
     });
 
     // initialize the bloodhound suggestion engine
-    stores.initialize();
+    var promise = stores.initialize();
+
+    promise
+            .done(function() { $('#loader').css('display','none'); })
+            .fail(function() { console.log('err, something went wrong :('); });
 
     // passing in `null` for the `options` arguments will result in the default
     // options being used
@@ -55,5 +67,6 @@
             return;
         window.location.href = "/listing/" + suggestion.store_id;
         console.log('Selection: ' + suggestion.store_id);
+        $('#loader').css('display','inherit');
     });
 </script>
