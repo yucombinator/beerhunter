@@ -20,7 +20,20 @@
           </div>
         </div>
         <div class="ui message">
-          A <a href="http://yuchen.io/" title="My Site!">Yu Chen</a> production/ <a href="https://github.com/icechen1/beerhunter" title="Repo">GitHub</a> / What is this?
+          <div class="ui accordion fluid">
+            <div class="title">
+              <i class="dropdown icon"></i>
+              What is this?
+            </div>
+            <div class="content">
+              <div class="transition hidden left" style="padding:10px;">
+                <p>Beer is expensive, especially if you are a broke college student. That's why I made BeerNow, so I can use Math™ to find out what is the most alcohol I can buy for my money.</p>
+                <p>How do we find the cheapest beer? With this equation: <br/> <b>ABV * amount per unit * volume / price per unit</b></p>
+                <p>Hope you find this useful! Shoot me any <a href="mailto:me@yuchen.io">fan/hate mail</a> or whatever.</p>
+              </div>
+            </div>
+          </div>
+          Made with ♥ by <a href="http://yuchen.io/" title="My Site!">Yu Chen</a> | <a href="https://github.com/icechen1/beerhunter" title="Repo">GitHub</a>
         </div>
     </div>
 </div>
@@ -69,4 +82,8 @@
         console.log('Selection: ' + suggestion.store_id);
         $('#loader').css('display','inherit');
     });
+
+    $('.ui.accordion')
+            .accordion()
+    ;
 </script>
