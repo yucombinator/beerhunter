@@ -34,12 +34,24 @@
               </div>
             </div>
           </div>
+          <div class="fb-share-button" data-href="http://beernow.ca" data-layout="button_count"></div>| <a href="https://twitter.com/share" class="twitter-share-button" data-text="Find the cheapest beer at the Beer store at beernow.ca">Tweet</a>
+          <br>
           Made with ♥ by <a href="http://yuchen.io/" title="My Site!">Yu Chen</a> | <a href="https://github.com/icechen1/beerhunter" title="Repo">GitHub</a>
         </div>
     </div>
 </div>
 
+<div id="fb-root"></div>
 <script>
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=652947734841877";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
     var stores = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace(['city','address', 'postal_code']),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
