@@ -104,3 +104,8 @@ html, body {
         }
     }
 }
+
+.fb-share-button{
+    position:relative;
+    top:-4px;
+}
