@@ -6,7 +6,7 @@
             <div class="ui large form">
                 <div class="field">
                     <div class="ui left input">
-                      <input class="typeahead" type="text" placeholder="Store location...">
+                      <input class="typeahead" type="text" placeholder="Store location by city, address or postal code...">
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
 
 <script>
     var stores = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace(['city','address']),
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace(['city','address', 'postal_code']),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         // url points to a json file that contains an array of stores names
         prefetch: '/get_store_listing/'
@@ -61,14 +61,14 @@
         suggestion: 'tt-suggestion ui relaxed divided list'
     }}, {
         display: function(value){
-            return value.city + " " + value.address;
+            return value.city + " " + value.address + "(" + value.postal_code + ")";
         },
         templates:{
             suggestion: function(item){
                 return '  <div class="item"> ' +
                 '       <div class="content left">' +
                 '       <a class="header">'+item.city+'</a> ' +
-                '       <div class="description"><i class="large marker middle aligned icon"></i>'+item.address+'</div> ' +
+                '       <div class="description"><i class="large marker middle aligned icon"></i>'+item.address+ ' (' + item.postal_code + ')</div> ' +
                 '</div>' +
                 '</div>';
             }
